@@ -6,21 +6,34 @@ import {NgForOf} from "@angular/common";
 @Component({
   selector: 'app-projects',
   standalone: true,
+  templateUrl: './projects.component.html',
   imports: [
     NgForOf
   ],
-  templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'
 })
 
 export class ProjectsComponent implements OnInit{
 
   ps = inject(ProjectService);
-  allProjects: Project[] = [];
+allProjects: Project[] = [];
+//allProjects!: Project[]
 
-  async ngOnInit(): Promise<void> {
-    this.allProjects = await this.ps.getAllProjects()
-    console.log('in table --> allProjects', this.allProjects)
+  ngOnInit(): void {
+    this.readAllProjects();
+  }
+
+
+
+  readAllProjects() {
+    this.ps.getAllProjects().subscribe({
+        next: (response) => {
+          console.log(this.allProjects);
+          this.allProjects = response;
+        },
+        error: (err) => console.log(err),
+        complete: () => console.log('getAllProjects() completed')
+      })
   }
 
 }

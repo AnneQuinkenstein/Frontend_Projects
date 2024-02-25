@@ -5,6 +5,7 @@ import {NavComponent} from "./nav/nav.component";
 import {FooterComponent} from "./footer/footer.component";
 import {ProjectsComponent} from "./projects/projects.component";
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
