@@ -10,7 +10,7 @@
    <tr *ngFor="let project of allProjects" >
      <td>{{ project.project_name }}</td>
      <td>{{ project.topic }}</td>
-     <td>{{ project.deadline }}</td>
+     <td>{{ project.deadline | date }}</td>
       </tr>
   </tbody>
 </table>

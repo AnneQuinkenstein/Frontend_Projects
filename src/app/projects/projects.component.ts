@@ -1,14 +1,15 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {ProjectService} from "../shared/project.service";
 import {Project} from "../shared/project";
-import {NgForOf} from "@angular/common";
+import {DatePipe, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-projects',
   standalone: true,
   templateUrl: './projects.component.html',
   imports: [
-    NgForOf
+    NgForOf,
+    DatePipe
   ],
   styleUrl: './projects.component.css'
 })
