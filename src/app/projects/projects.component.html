@@ -1,1 +1,16 @@
-<p>projects works!</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Project</th>
+    <th scope="col">Topic</th>
+    <th scope="col">Deadline</th>
+  </tr>
+  </thead>
+  <tbody>
+   <tr *ngFor="let project of allProjects" >
+     <td>{{ project.project_name }}</td>
+     <td>{{ project.topic }}</td>
+     <td>{{ project.deadline }}</td>
+      </tr>
+  </tbody>
+</table>
