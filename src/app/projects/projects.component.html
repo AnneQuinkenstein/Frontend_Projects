@@ -16,7 +16,7 @@
        <td>{{ project.project_name }}</td>
        <td>{{ project.topic }}</td>
        <td>{{ project.deadline | date }}</td>
-     <td><a class="btn btn-sm btn-success" [routerLink]="['/projectgit ', project.project_id]">update</a></td>
+     <td><a class="btn btn-sm btn-success" [routerLink]="['/project ', project.project_id]">update</a></td>
       <td><button class="btn btn-sm btn-danger" (click)="deleteProject(project.project_id)">delete</button></td>
       </tr>
   </tbody>
