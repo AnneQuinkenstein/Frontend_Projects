@@ -8,12 +8,32 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ProjectService {
-  baseUrl = 'http://localhost:4000';
+  backendUrl = 'http://localhost:4000';
 
   constructor(private http: HttpClient) { }
 
   getAllProjects(): Observable<Project[]>{
-    return this.http.get<Project[]>(this.baseUrl + '/project');
+    return this.http.get<Project[]>(this.backendUrl + '/project');
+  }
+
+  getOneProject(id: string): Observable<Project>{
+    let endpoint = '/project';
+    return this.http.get<Project>(this.backendUrl + endpoint + '/' + id);
+  }
+
+  createNewProject(project: Project): Observable<Project> {
+    let endpoint = '/project';
+    return this.http.post<Project>(this.backendUrl + endpoint, project);
+  }
+
+  updateProject(project: Project, id: string): Observable<Project> {
+    let endpoint = '/project';
+    return this.http.put<Project>(this.backendUrl + endpoint + "/" + id, project);
+  }
+
+  deleteOneProject(id: string): Observable<any> {
+    let endpoint = '/project';
+    return this.http.delete<any>(this.backendUrl + endpoint + "/" + id);
   }
 
 }

@@ -17,15 +17,12 @@ import {DatePipe, NgForOf} from "@angular/common";
 export class ProjectsComponent implements OnInit{
 
   ps = inject(ProjectService);
-allProjects: Project[] = [];
+  allProjects: Project[] = [];
 //allProjects!: Project[]
-
+  project?: Project;
   ngOnInit(): void {
     this.readAllProjects();
   }
-
-
-
   readAllProjects() {
     this.ps.getAllProjects().subscribe({
         next: (response) => {
@@ -34,6 +31,39 @@ allProjects: Project[] = [];
         },
         error: (err) => console.log(err),
         complete: () => console.log('getAllProjects() completed')
+      })
+  }
+
+  createNewProject(project: Project):void {
+    this.ps.createNewProject(project).subscribe({
+      next: (response) => console.log('response', response),
+      error: (err) => console.log(err),
+      complete: () => console.log('register completed')
+    });
+  }
+
+  updateProject(project: Project, id: string): void {
+    console.log('id to update', id)
+    this.ps.updateProject(project, id).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.readAllProjects();
+      },
+      error: (err) => console.log(err),
+      complete: () => console.log('deleteProject() completed')
+    });
+  }
+
+deleteProject(id: string): void {
+    console.log('id to delete', id)
+    this.ps.deleteOneProject(id).subscribe(
+      {
+        next: (response) => {
+          console.log(response);
+          this.readAllProjects();
+        },
+        error: (err) => console.log(err),
+        complete: () => console.log('deleteProject() completed')
       })
   }
 
