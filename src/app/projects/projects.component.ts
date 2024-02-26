@@ -2,6 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {ProjectService} from "../shared/project.service";
 import {Project} from "../shared/project";
 import {DatePipe, NgForOf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-projects',
@@ -9,7 +10,8 @@ import {DatePipe, NgForOf} from "@angular/common";
   templateUrl: './projects.component.html',
   imports: [
     NgForOf,
-    DatePipe
+    DatePipe,
+    RouterLink
   ],
   styleUrl: './projects.component.css'
 })
