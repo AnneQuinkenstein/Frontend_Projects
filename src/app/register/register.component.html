@@ -1,0 +1,55 @@
+<div class="container">
+  <h1 class="my-5">Registrierung</h1>
+
+  <div class="mb-3 form-floating">
+    <input type="text" class="form-control" id="idNickname" placeholder="Nickname" [formControl]="nicknameControl"
+           [class]="nicknameControl.touched ? nicknameControl.valid ? 'is-valid' : 'is-invalid' : ''">
+    <label for="idNickname">Nickname</label>
+    <div class="invalid-feedback">
+      Please provide a nickname.
+    </div>
+  </div>
+
+  <div class="mb-3 form-floating">
+    <input type="text" class="form-control" id="idPassword" placeholder="password" [formControl]="passwordControl"
+           [class]="passwordControl.touched ? passwordControl.valid ? 'is-valid' : 'is-invalid' : ''">
+    <label for="idPassword">Password</label>
+    <div class="invalid-feedback">
+      Please provide a password.
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="w-100 btn btn-success" (click)="register(content)">Register</button>
+    </div>
+    <div class="col">
+      <button type="button" class="w-100 btn btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h6 class="modal-title" id="modal-basic-title">New member registered!</h6>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <table class="table">
+      <tbody>
+      <tr>
+        <td>nickname</td>
+        <td>:</td>
+        <td>{{ nicknameControl.value }}</td>
+      </tr>
+      <tr>
+        <td>password</td>
+        <td>:</td>
+        <td>{{ passwordControl.value }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>
