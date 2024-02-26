@@ -19,7 +19,7 @@ export class ProjectsComponent implements OnInit{
   ps = inject(ProjectService);
   allProjects: Project[] = [];
 //allProjects!: Project[]
-  project?: Project;
+  projects?: Project;
   ngOnInit(): void {
     this.readAllProjects();
   }
