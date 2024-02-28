@@ -8,7 +8,6 @@
     <th scope="col">Deadline</th>
     <th scope="col">Milestones</th>
     <th scope="col"></th>
-    <th scope="col"></th>
   </tr>
   </thead>
   <tbody>
@@ -17,9 +16,11 @@
        <td>{{ project.project_name }}</td>
        <td>{{ project.topic }}</td>
        <td>{{ project.deadline | date }}</td>
-       <td>{{ project.milestone_name }}</td>
-     <td><a class=" bi bi-pen px-5" style="font-size: 1.5rem; color: mediumblue;"[routerLink]="['/project', project.project_id]"></a></td>
-      <td><span class=" bi bi-trash px-5" style="font-size: 1.5rem; color: darkred;" (click)="deleteProject(project.project_id)"></span></td>
+       <td>
+         <span *ngFor="let milestone of project.milestone_name"> <a> <{{milestone}}> </a></span>
+       </td>
+     <td><a class=" bi bi-pen " style="font-size: 1.5rem; color: mediumblue;"[routerLink]="['/project', project.project_id]"></a>
+     <span class=" bi bi-trash px-2" style="font-size: 1.5rem; color: darkred;" (click)="deleteProject(project.project_id)"></span></td>
       </tr>
   </tbody>
 </table>

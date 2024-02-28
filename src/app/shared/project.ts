@@ -4,6 +4,6 @@ export interface Project {
    project_name : string;
    topic : string;
    deadline : string;
-   milestone_name?: string;
+   milestone_name?: Array<string>;
 
 }

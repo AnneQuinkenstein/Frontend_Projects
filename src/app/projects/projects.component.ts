@@ -48,7 +48,7 @@ export class ProjectsComponent implements OnInit{
             for(let i = 0; i < response.length; i++) {
               milestones[i] = response[i].milestone_name
             }
-            allProjects[i].milestone_name = milestones.toString();
+            allProjects[i].milestone_name = milestones;
           },
           error: (err) => console.log(err),
           complete: () => console.log('getallMilestones for Project ' + allProjects[i].project_name + ' completed')
