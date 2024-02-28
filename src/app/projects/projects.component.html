@@ -17,7 +17,7 @@
        <td>{{ project.project_name }}</td>
        <td>{{ project.topic }}</td>
        <td>{{ project.deadline | date }}</td>
-    <!--  <td>{{ milestones }}</td> -->
+       <td>{{ project.milestone_name }}</td>
      <td><a class=" bi bi-pen px-5" style="font-size: 1.5rem; color: mediumblue;"[routerLink]="['/project', project.project_id]"></a></td>
       <td><span class=" bi bi-trash px-5" style="font-size: 1.5rem; color: darkred;" (click)="deleteProject(project.project_id)"></span></td>
       </tr>

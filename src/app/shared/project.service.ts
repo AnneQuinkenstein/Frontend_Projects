@@ -9,7 +9,6 @@ import {Observable} from "rxjs";
 })
 export class ProjectService {
   backendUrl = 'http://localhost:4000';
-
   constructor(private http: HttpClient) { }
 
   getAllProjects(): Observable<Project[]>{
