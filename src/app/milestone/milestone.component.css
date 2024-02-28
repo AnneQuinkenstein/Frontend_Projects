@@ -4,7 +4,8 @@ div{
   text-align: center;
   padding: 1%;
 }
-a{
-  color: rebeccapurple;
-  text-decoration: none;
+.top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
