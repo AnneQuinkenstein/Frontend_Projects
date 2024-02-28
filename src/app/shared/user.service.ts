@@ -9,13 +9,13 @@ import {Project} from "./project";
   providedIn: 'root'
 })
 export class UserService {
-  backendUrl = 'http://localhost:4000';
+  backendUrl = 'http://localhost:4000/users';
 
   constructor(private http: HttpClient) {
   }
 
   createNewUser(user: User): Observable<User> {
-    let endpoint = '/user';
+    let endpoint = '/register';
     return this.http.post<User>(this.backendUrl + endpoint, user);
   }
 

@@ -21,7 +21,7 @@ export class ProjectsComponent implements OnInit{
   ps = inject(ProjectService);
   allProjects: Project[] = [];
 //allProjects!: Project[]
-  projects?: Project;
+  project?: Project;
   ngOnInit(): void {
     this.readAllProjects();
   }
@@ -35,6 +35,7 @@ export class ProjectsComponent implements OnInit{
         complete: () => console.log('getAllProjects() completed')
       })
   }
+
 
   createNewProject(project: Project):void {
     this.ps.createNewProject(project).subscribe({

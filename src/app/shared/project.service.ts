@@ -13,26 +13,26 @@ export class ProjectService {
   constructor(private http: HttpClient) { }
 
   getAllProjects(): Observable<Project[]>{
-    return this.http.get<Project[]>(this.backendUrl + '/project');
+    return this.http.get<Project[]>(this.backendUrl + '/projects');
   }
 
   getOneProject(id: string): Observable<Project>{
-    let endpoint = '/project';
+    let endpoint = '/projects';
     return this.http.get<Project>(this.backendUrl + endpoint + '/' + id);
   }
 
   createNewProject(project: Project): Observable<Project> {
-    let endpoint = '/project';
+    let endpoint = '/projects';
     return this.http.post<Project>(this.backendUrl + endpoint, project);
   }
 
   updateProject(project: Project, id: string): Observable<Project> {
-    let endpoint = '/project';
+    let endpoint = '/projects';
     return this.http.put<Project>(this.backendUrl + endpoint + "/" + id, project);
   }
 
   deleteOneProject(id: string): Observable<any> {
-    let endpoint = '/project';
+    let endpoint = '/projects';
     return this.http.delete<any>(this.backendUrl + endpoint + "/" + id);
   }
 
