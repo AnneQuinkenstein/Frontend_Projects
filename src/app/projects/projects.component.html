@@ -26,20 +26,21 @@
      <span class=" bi bi-trash px-2" style="font-size: 1.5rem; color: darkred;" (click)="deleteProject(project.project_id!)"></span>
       </tr>
   <tr>
+    <td>Add Project:</td>
+    <td>
+      <input type="text" id="idProjectname" placeholder="  projectname"
+             [formControl]="projectNameControl" />
+    </td>
+    <td>
+      <input type="text" id="idTopic" placeholder="  topic"
+             [formControl]="topicControl" />
+    </td>
+    <td>
+      <input type="text"  id="idDeadline" placeholder="  deadline"   [formControl]= "deadlineControl">
+    </td>
     <td></td>
-    <td>
-      <input type="text" class="form-control" id="idProjectname" placeholder="  projectname"
-             formControlName="projectNameControl" />
-    </td>
-    <td>
-      <input type="text" class="form-control" id="idTopic" placeholder="  topic"
-             formControlName="topicControl" />
-    </td>
-    <td>
-      <input type="text" class="form-control" id="idDeadline" placeholder="  deadline"   formControlName=="deadlineControl">
-    </td>
    <td>
-  <span class=" bi bi-building-add px-2" style="font-size: 1rem; color: mediumblue;" (click)="createNewProject(content)"> add Project </span> 
+  <button class=" bi bi-building-add px-2" style="font-size: 1rem; color: mediumblue;" (click)="createNewProject()"> add </button>
     </td>
   </tr>
   </tbody>

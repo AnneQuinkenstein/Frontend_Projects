@@ -29,6 +29,7 @@ export class ProjectsComponent implements OnInit {
 //allProjects!: Project[]
   project?: Project;
 
+
   ngOnInit(): void {
     this.readAllProjects();
   }
@@ -89,20 +90,24 @@ export class ProjectsComponent implements OnInit {
   }
 
 
-  form = new FormGroup({
-    projectNameControl : new FormControl<string>(''),
-    topicControl: new FormControl<string>(''),
-    deadlineControl: new FormControl<string>(''),
-  });
 
-  createNewProject(content: TemplateRef<any>) {
-    const values = this.form.value;
+    projectNameControl = new FormControl<string>('')
+    topicControl =  new FormControl<string>('')
+    deadlineControl = new FormControl<string>('')
+
+
+  createNewProject() {
+
     let project = {
       project_id: '',
-      project_name : values.projectNameControl!,
-      topic : values.topicControl!,
-      deadline : values.deadlineControl!
+      project_name : this.projectNameControl.value!,
+      topic : this.topicControl.value!,
+      deadline : this.deadlineControl.value!
     }
+    console.log(project);
+
+    //TODO topic und deadline müssen nicht ausgefüllt werden
+    //TODO deadline mind. validierung, wie das Dateformat sein muss
 
       this.ps.createNewProject(project).subscribe({
             next: (response) => {
@@ -115,6 +120,7 @@ export class ProjectsComponent implements OnInit {
           }
         );
 
+      this.readAllProjects();
     }
 
 }
