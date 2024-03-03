@@ -1,10 +1,10 @@
-import {Component, inject, OnInit, TemplateRef} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {ProjectService} from "../shared/project.service";
 import {Project} from "../shared/project";
 import {DatePipe, NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {MilestonesService} from "../shared/milestones.service";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-projects',
@@ -26,9 +26,9 @@ export class ProjectsComponent implements OnInit {
   ms = inject(MilestonesService);
 
   allProjects: Project[] = [];
-//allProjects!: Project[]
-  project?: Project;
-
+  projectNameControl = new FormControl<string>('', [Validators.required, Validators.maxLength(25)]);
+  topicControl = new FormControl<string>('');
+  deadlineControl = new FormControl<string>('', Validators.pattern(/^(0[1-9]|1[0-2])\/(0[1-9]|1[0-9]|2[0-9]|3[01])\/((19|20)\d\d)$/));
 
   ngOnInit(): void {
     this.readAllProjects();
@@ -38,30 +38,21 @@ export class ProjectsComponent implements OnInit {
     this.ps.getAllProjects().subscribe({
       next: (response) => {
         this.allProjects = response;
-        this.addMilesstonestoProject(response);
+        this.addMilestonesToProject(response);
       },
       error: (err) => console.log(err),
       complete: () => console.log('getAllProjects() completed')
     })
   }
 
-  addMilesstonestoProject(allProjects: Project[]) {
-    for (let i = 0; i < allProjects.length; i++) {
-      this.ms.getMilestonesForProject(allProjects[i].project_id!).subscribe(
-        {
-          next: (response) => {
-            let milestones = [];
-            for (let i = 0; i < response.length; i++) {
-              milestones[i] = response[i].milestone_name
-            }
-            allProjects[i].milestone_name = milestones;
-          },
-          error: (err) => console.log(err),
-          complete: () => console.log('getallMilestones for Project ' + allProjects[i].project_name + ' completed')
-        })
-    }
-
+  addMilestonesToProject(allProjects: Project[]) {
+    allProjects.forEach((project, i) => {
+      this.ms.getMilestonesForProject(project.project_id!).subscribe(response => {
+        allProjects[i].milestone_name = response.map(milestone => milestone.milestone_name);
+      });
+    });
   }
+
 
 
   updateProject(project: Project, id: string): void {
@@ -89,38 +80,43 @@ export class ProjectsComponent implements OnInit {
       })
   }
 
-
-
-    projectNameControl = new FormControl<string>('')
-    topicControl =  new FormControl<string>('')
-    deadlineControl = new FormControl<string>('')
-
-
   createNewProject() {
+    if (this.formValid()) {
+      let project = {
+        project_id: '',
+        project_name : this.projectNameControl.value!,
+        topic : this.topicControl.value!,
+        deadline : this.deadlineControl.value!
+      }
+      console.log(project);
 
-    let project = {
-      project_id: '',
-      project_name : this.projectNameControl.value!,
-      topic : this.topicControl.value!,
-      deadline : this.deadlineControl.value!
-    }
-    console.log(project);
-
-    //TODO topic und deadline müssen nicht ausgefüllt werden
-    //TODO deadline mind. validierung, wie das Dateformat sein muss
 
       this.ps.createNewProject(project).subscribe({
-            next: (response) => {
-              console.log(response);
-            },
-            error: (err) => {
-              console.log(err);
-            },
-            complete: () => console.log('update() completed')
-          }
-        );
-
-      this.readAllProjects();
+          next: (response) => {
+            console.log(response);
+            this.cancel();
+            this.readAllProjects();
+          },
+          error: (err) => {
+            console.log(err);
+          },
+          complete: () => console.log('update() completed')
+        }
+      );
+    }
+     else {
+       console.warn('form still invalid!')
     }
 
+    }
+
+  private formValid() {
+    return this.projectNameControl.valid && this.deadlineControl.valid;
+  }
+
+  private cancel() {
+    this.projectNameControl.reset();
+    this.topicControl.reset();
+    this.deadlineControl.reset();
+  }
 }

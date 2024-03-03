@@ -1,17 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Projects</a>
+    <a class="navbar-brand" [routerLink]="'projects'">projects</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <div></div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="'project'"> All Projects</a>
-        </li>
-      <li class="nav-item">
+       <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="'projects'"> All Projects</a>
+        </li>-->
+      <!--<li class="nav-item">
           <a class="nav-link" href="#">Create a Project</a>
-        </li>
+        </li>-->
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
@@ -26,17 +27,20 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li> -->
+
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="search a project" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">search</button>
+        </form>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search a Project" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="'register'"> Register</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="'register'"> register</a>
         </li>
+        |
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="#">login</a>
         </li>
       </ul>
     </div>

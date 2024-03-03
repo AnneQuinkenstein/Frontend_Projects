@@ -1,4 +1,4 @@
-import {Component, inject, TemplateRef} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {UserService} from "../shared/user.service";
 import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
 
@@ -19,7 +19,7 @@ export class RegisterComponent {
     return this.nicknameControl.valid && this.passwordControl.valid;
   }
 
-  register(content: TemplateRef<any>) {
+  register() {
 
     if(this.formValid())
     {
@@ -29,9 +29,12 @@ export class RegisterComponent {
       }
 
       this.us.createNewUser(user).subscribe({
-        next: (response) => console.log('response', response),
+        next: (response) => {
+          console.log('response', response)
+          this.cancel()
+        },
         error: (err) => console.log(err),
-        complete: () => console.log('register User completed')
+        complete: () => console.log(' createUser complete')
       });
       console.log('new user: ', user)
     }

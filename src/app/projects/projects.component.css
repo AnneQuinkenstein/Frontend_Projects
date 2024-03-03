@@ -1,10 +1,14 @@
 @import url('../../../node_modules/bootstrap-icons/font/bootstrap-icons.css');
 div{
-  background-color: grey;
+  background-color: lightpink;
   text-align: center;
   padding: 1%;
 }
 a{
   color: rebeccapurple;
   text-decoration: none;
+}
+
+.invalid-feedback {
+  background-color: #b6d4fe;
 }
