@@ -3,7 +3,8 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: grey;
-  color: white;
+  color: hotpink;
   text-align: center;
+  background-color: #f8d7da;
+  background-image: repeating-linear-gradient(#f8d7da, white 5%, #f8d7da 10%);
 }

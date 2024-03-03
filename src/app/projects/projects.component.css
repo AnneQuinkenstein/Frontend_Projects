@@ -1,6 +1,6 @@
 @import url('../../../node_modules/bootstrap-icons/font/bootstrap-icons.css');
 div{
-  background-color: lightpink;
+
   text-align: center;
   padding: 1%;
 }
@@ -11,4 +11,14 @@ a{
 
 .invalid-feedback {
   background-color: #b6d4fe;
+}
+
+.ausdehnen {
+  background-image: repeating-linear-gradient(#f8d7da, white 10%, #f8d7da 20%);
+  width: 100%;
+  height: 100vh
+}
+
+.table{
+  opacity: 0.8;
 }

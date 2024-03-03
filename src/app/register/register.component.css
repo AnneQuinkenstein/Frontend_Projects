@@ -1,0 +1,9 @@
+.bucket {
+  background-image: linear-gradient(
+    to bottom,
+    white,
+  lightpink
+  );
+  width: 100vw;
+  height: 100vh;
+}
