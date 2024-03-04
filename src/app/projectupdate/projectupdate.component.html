@@ -1,0 +1,70 @@
+<div class="container">
+  <h1 class="my-5">update</h1>
+
+  <div class="mb-3 form-floating">
+    <input type="text" class="form-control" id="idProjectName" placeholder="projectName" [formControl]="projectNameControl"
+           [class]="projectNameControl.touched ? projectNameControl.valid ? 'is-valid' : 'is-invalid' : ''">
+    <label for="idProjectName">projectName</label>
+    <div class="invalid-feedback">
+      Please provide a projectName.
+    </div>
+  </div>
+
+  <div class="mb-3 form-floating">
+    <input type="text" class="form-control" id="idTopic" placeholder="topic" [formControl]="topicControl"
+           [class]="topicControl.touched ? topicControl.valid ? 'is-valid' : 'is-invalid' : ''">
+    <label for="idTopic">Topic</label>
+    <div class="invalid-feedback">
+      Please provide a topic.
+    </div>
+  </div>
+
+  <div class="mb-5 form-floating">
+    <input type="text" class="form-control" id="idDealine" placeholder="deadline in DD/MM/YYYY" [formControl]="deadlineControl"
+           [class]="deadlineControl.touched ? deadlineControl.valid ? 'is-valid' : 'is-invalid' : ''">
+    <label for="idDealine">Dealine</label>
+    <div class="invalid-feedback">
+      Please provide a valid dealine address.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button type="button" class="w-100 btn btn-success" (click)="register(content)">Update</button>
+    </div>
+    <div class="col">
+      <button type="button" class="w-100 btn btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h6 class="modal-title" id="modal-basic-title">Existing member updated!</h6>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <table class="table">
+      <tbody>
+      <tr>
+        <td>projectName</td>
+        <td>:</td>
+        <td>{{ projectNameControl.value }}</td>
+      </tr>
+      <tr>
+        <td>topic</td>
+        <td>:</td>
+        <td>{{ topicControl.value }}</td>
+      </tr>
+      <tr>
+        <td>dealine</td>
+        <td>:</td>
+        <td>{{ deadlineControl.value }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>

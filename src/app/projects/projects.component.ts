@@ -54,19 +54,6 @@ export class ProjectsComponent implements OnInit {
   }
 
 
-
-  updateProject(project: Project, id: string): void {
-    console.log('id to update', id)
-    this.ps.updateProject(project, id).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.readAllProjects();
-      },
-      error: (err) => console.log(err),
-      complete: () => console.log('deleteProject() completed')
-    });
-  }
-
   deleteProject(id: string): void {
     console.log('id to delete', id)
     this.ps.deleteOneProject(id).subscribe(

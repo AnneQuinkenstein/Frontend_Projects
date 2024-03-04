@@ -15,6 +15,8 @@ export class RegisterComponent {
   nicknameControl = new FormControl('', [Validators.required]);
   passwordControl = new FormControl('', [Validators.required]);
 
+  //ToDO: UserVerwaltung https://freiheit.f4.htw-berlin.de/webtech/guards/#doppelte-username-und-email-verhindern
+
   private formValid() {
     return this.nicknameControl.valid && this.passwordControl.valid;
   }

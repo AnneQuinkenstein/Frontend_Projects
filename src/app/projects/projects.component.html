@@ -21,7 +21,7 @@
        <td>
          <span *ngFor="let milestone of project.milestone_name"> <a [routerLink]="['/milestone', milestone]">  <{{milestone}}>  </a></span>
        </td>
-     <td><a class=" bi bi-pen " style="font-size: 1.5rem; color: mediumblue;" [routerLink]="['/project', project.project_id]"></a>
+     <td><a class=" bi bi-pen " style="font-size: 1.5rem; color: mediumblue;" [routerLink]="['/projects', project.project_id]"></a>
      <span class=" bi bi-trash px-2" style="font-size: 1.5rem; color: darkred;" (click)="deleteProject(project.project_id!)"></span>
       </tr>
   <tr>
