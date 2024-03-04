@@ -4,6 +4,7 @@ import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstra
 import { ProjectService } from '../shared/project.service';
 import { Project } from '../shared/project';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update',
@@ -25,6 +26,8 @@ export class ProjectUpdateComponent implements OnInit{
   private ps = inject(ProjectService)
   private route = inject(ActivatedRoute)
   private router = inject(Router);
+  private location: Location = inject(Location);
+
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '';
@@ -85,9 +88,7 @@ export class ProjectUpdateComponent implements OnInit{
   }
 
   cancel() {
-    this.projectNameControl.reset();
-    this.topicControl.reset();
-    this.deadlineControl.reset();
+    this.location.back();
   }
 
   private getDismissReason(reason: any): string {
