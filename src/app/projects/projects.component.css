@@ -22,3 +22,16 @@ a{
 .table{
   opacity: 0.8;
 }
+
+.filter{
+  margin:  2em auto;
+}
+
+.margin-sides {
+  margin-left: 10em;
+  margin-right: 5em;
+}
+
+.width{
+  width: 20em;
+}

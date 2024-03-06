@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {ProjectService} from "../shared/project.service";
 import {Project} from "../shared/project";
-import {DatePipe, NgForOf} from "@angular/common";
+import {DatePipe, DecimalPipe, NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {MilestonesService} from "../shared/milestones.service";
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -29,6 +29,7 @@ export class ProjectsComponent implements OnInit {
   projectNameControl = new FormControl<string>('', [Validators.required, Validators.maxLength(25)]);
   topicControl = new FormControl<string>('');
   deadlineControl = new FormControl<string>('', Validators.pattern(/^(0[1-9]|1[0-2])\/(0[1-9]|1[0-9]|2[0-9]|3[01])\/((19|20)\d\d)$/));
+  search = new FormControl('');
 
   ngOnInit(): void {
     this.readAllProjects();
@@ -105,5 +106,18 @@ export class ProjectsComponent implements OnInit {
     this.projectNameControl.reset();
     this.topicControl.reset();
     this.deadlineControl.reset();
+  }
+
+  filterProjects(){
+    let searchstring = this.search.value? this.search.value.toLowerCase(): "";
+    console.log("searchstring:" + searchstring);
+    this.allProjects = this.allProjects.filter( (project) => {
+      return (project.project_name.toLowerCase().includes(searchstring) || project.topic?.toLowerCase().includes(searchstring) || project.deadline?.toLowerCase().includes(searchstring) || project.milestone_name?.join().toLowerCase().includes(searchstring));
+    });
+  }
+
+  back() {
+    this.readAllProjects();
+    this.search.reset()
   }
 }

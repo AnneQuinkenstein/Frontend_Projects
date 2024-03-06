@@ -29,7 +29,6 @@ export class RegisterComponent {
       complete: () => console.log('getOneUser() completed')
     });
   }
-
   register() {
     this.getOneUser(this.nicknameControl.value!)
 
