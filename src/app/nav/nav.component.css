@@ -6,4 +6,6 @@
   background-color: #f8d7da;
 }
 
-
+.container-fluid {
+  width: 90%;
+}

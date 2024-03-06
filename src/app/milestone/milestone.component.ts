@@ -3,13 +3,16 @@ import {MilestonesService} from "../shared/milestones.service";
 import {NextStep} from "../shared/next-step";
 import {ActivatedRoute } from '@angular/router';
 import {NgForOf} from "@angular/common";
+import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @Component({
   selector: 'app-milestone',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    FormsModule,
+    ReactiveFormsModule
   ],
   templateUrl: './milestone.component.html',
   styleUrl: './milestone.component.css'
@@ -23,6 +26,7 @@ export class MilestoneComponent implements OnInit {
 
   private ms = inject(MilestonesService);
   private route = inject(ActivatedRoute);
+  search = new FormControl('');
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '';
@@ -41,4 +45,17 @@ export class MilestoneComponent implements OnInit {
     })
   }
 
+
+  filterSteps() {
+    let searchstring = this.search.value? this.search.value.toLowerCase(): "";
+    console.log("searchstring:" + searchstring);
+    this.nextSteps = this.nextSteps.filter( (step) => {
+      return (step.todo.toLowerCase().includes(searchstring) || step.todo?.toLowerCase().includes(searchstring) || step.notes?.toLowerCase().includes(searchstring) || step.nickname?.toLowerCase().includes(searchstring));
+    });
+  }
+
+  back() {
+    this.readAllSteps(this.id);
+    this.search.reset()
+  }
 }
