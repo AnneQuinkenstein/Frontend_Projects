@@ -4,9 +4,10 @@ import {ProjectUpdateComponent} from "./projectupdate/projectupdate.component";
 import {RegisterComponent} from "./register/register.component";
 import {MilestoneComponent} from "./milestone/milestone.component";
 import {UsersComponent} from "./users/users.component";
+import {HomeComponent} from "./home/home.component";
 
 export const routes: Routes = [
-  { path: '', component: ProjectsComponent, pathMatch: 'full'},
+  { path: '', component: HomeComponent, pathMatch: 'full'},
   { path: 'projects', component: ProjectsComponent, pathMatch: 'full'},
   { path: 'projects/:id', component: ProjectUpdateComponent},
   { path: 'register', component: RegisterComponent },

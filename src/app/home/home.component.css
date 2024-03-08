@@ -1,0 +1,7 @@
+.image{
+  height:85vh;
+  background-size:cover;
+  width:auto;
+    background-image:url('../../assets/dies.jpg');
+  background-position:50% 50%;
+}
