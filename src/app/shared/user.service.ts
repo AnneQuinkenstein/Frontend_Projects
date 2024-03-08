@@ -10,6 +10,8 @@ import {Project} from "./project";
 })
 export class UserService {
   backendUrl = 'http://localhost:4000/users';
+  private loggedIn: boolean = false;
+  private user!: User | null;
 
   constructor(private http: HttpClient) {
   }
@@ -23,6 +25,24 @@ export class UserService {
   createNewUser(user: User): Observable<User> {
     let endpoint = '/register';
     return this.http.post<User>(this.backendUrl + endpoint, user);
+  }
+
+
+  loginUser(nickname: string, password: string ): Observable<any>{
+    return this.http.post(this.backendUrl + '/login/', { nickname: nickname, password: password }, {observe: 'response'});
+  }
+
+  isAuthenticated(): boolean {
+    return this.loggedIn;
+  }
+
+  logout(): void {
+    this.loggedIn = false;
+    this.user = null;
+  }
+
+  getUser(): User | null {
+    return this.user;
   }
 
 }

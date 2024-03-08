@@ -14,6 +14,7 @@ export class RegisterComponent {
   private us = inject(UserService);
   nicknameControl = new FormControl('', [Validators.required]);
   passwordControl = new FormControl('', [Validators.required]);
+  private user?: User;
 
 
   private formValid() {
@@ -42,12 +43,15 @@ export class RegisterComponent {
         this.us.createNewUser(user).subscribe({
           next: (response) => {
             console.log('response', response)
+            this.user = response;
+            this.us.loginUser(this.user.nickname, this.user.password);
             this.cancel()
           },
           error: (err) => console.log(err.error.message),
           complete: () => console.log(' createUser complete')
         });
         console.log('new user: ', user)
+
     }
     else
     {
