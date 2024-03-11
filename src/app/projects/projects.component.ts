@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {ProjectService} from "../shared/project.service";
 import {Project} from "../shared/project";
-import {DatePipe, DecimalPipe, NgForOf} from "@angular/common";
+import {DatePipe, NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {MilestonesService} from "../shared/milestones.service";
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";

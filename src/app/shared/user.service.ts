@@ -44,5 +44,4 @@ export class UserService {
   getUser(): User | null {
     return this.user;
   }
-
 }
