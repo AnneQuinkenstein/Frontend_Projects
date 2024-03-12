@@ -1,10 +1,6 @@
 <div class="bucket">
   <div class="container">
   <h1 class="my-5">{{ isRegistration() ? 'registration' : 'login' }}</h1>
-<!--
-    TODO: registration or login
--->
-
   <div class="mb-3 form-floating">
     <input type="text" class="form-control" id="idNickname" placeholder="nickname" [formControl]="nicknameControl"
            [class]="nicknameControl.touched ? nicknameControl.valid ? 'is-valid' : 'is-invalid' : ''">
@@ -29,9 +25,6 @@
     <div class="col" *ngIf="isRegistration()" >
       <button type="button" class="w-100 btn btn-outline-success" (click)="register()">register</button>
     </div>
-<!--
-    TODO: registration or login
--->
     <div class="col">
       <button type="button" class="w-100 btn btn-outline-info" (click)="cancel()">cancel</button>
     </div>

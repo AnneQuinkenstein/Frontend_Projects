@@ -14,9 +14,15 @@
           <a class="nav-link active me-auto ve" aria-current="page" [routerLink]="'register'"> register</a>
         </li>
         |
-        <li class="nav-item">
+        <li *ngIf="!isLoggedIn" class="nav-item">
           <a class="nav-link active me-auto ve" aria-current="page" [routerLink]="'login'"> login</a>
         </li>
+
+        <div *ngIf="isLoggedIn" class="right">
+          <span>{{nickname}} </span>
+          <a class="nav-link active me-auto ve" aria-current="page" [routerLink]="'login'"> login</a>
+          <button type="button" (click)="callLogout()">logout </button>
+        </div>
       </ul>
     </div>
 

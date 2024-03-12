@@ -47,9 +47,9 @@ export class RegisterComponent{
         next: (response) => {
           console.log('response', response)
           this.user = response;
-       /*   let respo = this.us.loginUser(this.user.nickname, this.user.password)
-          console.log("login: ",  respo);*/
-          this.router.navigate(['/projects/']);
+          let respo = this.us.loginUser(this.user.nickname, this.user.password)
+          console.log("login: ",  respo);
+          // this.router.navigate(['/projects/']);
           this.cancel()
         },
         error: (err) => console.log(err.error.message),
@@ -71,12 +71,12 @@ export class RegisterComponent{
     this.us.loginUser(user.nickname!, user.password!).subscribe({
         next: (response) => {
           console.log('login response',response);
-          if(response.status == 201)
+          if(response.status == 200)
           {
             this.us.getOneUser(user.nickname!).subscribe(
               (response) => {
-                this.us.loginUser(response.nickname, response.password);
-                this.router.navigate(['']);
+                this.us.login(user);
+                this.router.navigate(['/projects']);
               }
             )
           } else {

@@ -28,7 +28,7 @@ export class AuthguardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean | UrlTree {
-    return this.us.isAuthenticated()
+    return this.us.isLoggedIn()
       ? true
       : this.router.parseUrl('/login');
   }
