@@ -9,3 +9,11 @@
 .container-fluid {
   width: 90%;
 }
+
+.nickname{
+  margin: 5% 10px;
+}
+
+.logout{
+  margin: 0 10px;
+}

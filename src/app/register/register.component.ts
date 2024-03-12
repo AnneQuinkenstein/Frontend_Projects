@@ -47,12 +47,12 @@ export class RegisterComponent{
         next: (response) => {
           console.log('response', response)
           this.user = response;
-          let respo = this.us.loginUser(this.user.nickname, this.user.password)
-          console.log("login: ",  respo);
-          // this.router.navigate(['/projects/']);
-          this.cancel()
+          this.loginUser(user);
         },
-        error: (err) => console.log(err.error.message),
+        error: (err) => {
+          console.log(err.error.message);
+          this.cancel();
+        },
         complete: () => console.log(' createUser complete')
       });
       console.log('new user: ', user)
@@ -67,7 +67,11 @@ export class RegisterComponent{
         nickname: this.nicknameControl.value!,
         password: this.passwordControl.value!
       }
+      this.loginUser(user)
+    }
+  }
 
+  loginUser(user: User){
     this.us.loginUser(user.nickname!, user.password!).subscribe({
         next: (response) => {
           console.log('login response',response);
@@ -88,8 +92,9 @@ export class RegisterComponent{
         },
         complete: () => console.log('login completed')
       }
-    )};
+    );
   }
+
   cancel() {
     this.nicknameControl.reset();
     this.passwordControl.reset();
