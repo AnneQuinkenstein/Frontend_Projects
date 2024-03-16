@@ -4,6 +4,7 @@ div{
   text-align: center;
   padding: 1%;
 }
+
 a{
   color: rebeccapurple;
   text-decoration: none;
@@ -34,4 +35,8 @@ a{
 
 .width{
   width: 20em;
+}
+
+.filte{
+  display: flex;
 }

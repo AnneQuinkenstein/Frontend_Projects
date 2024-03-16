@@ -13,5 +13,5 @@ export const routes: Routes = [
   { path: 'milestone/:id', title: "Milestones", component: MilestoneComponent, canActivate: [AuthguardGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: RegisterComponent },
-  { path: '**', component:HomeComponent},
+  { path: '**', component: HomeComponent},
 ];

@@ -3,12 +3,12 @@
 
   <div class="d-flex justify-content-between mb-3 margin-sides ">
    <h1>pi pa projects</h1>
-
+<div class="filte">
     <input type="text" class="width form-control form-control-sm" placeholder="filter" [formControl]="search" (input)="filterProjects()"/>
     <div class="input-group-append">
       <button class="btn btn-outline-secondary btn-sm" type="button" (click)="back()">clear</button>
     </div>
-
+</div>
   </div>
 
 <table class="table table-striped table-hover table-responsive">
@@ -50,13 +50,16 @@
       <input type="text" class="form-control" id="idTopic" placeholder="      topic" [formControl]="topicControl" />
     </td>
     <td class="input-group has-validation">
-      <input type="text" class="form-control" id="idDeadline" placeholder="deadline in dd/mm/yyyy" [formControl]="deadlineControl"
+      <input type="text" class="form-control" id="idDeadline" placeholder="deadline in mm/dd/yyyy" [formControl]="deadlineControl"
              [class]="deadlineControl.touched ? deadlineControl.valid ? 'is-valid' : 'is-invalid' : ''">
       <div class="invalid-feedback">
         MM/DD/YYYY
       </div>
     </td>
-    <td></td>
+    <td>
+      <input type="text" class="form-control" id="idMilestones" placeholder="      milesstone, milestone" [formControl]="mileStonecControl" />
+    </td>
+   <!-- <td></td>-->
    <td>
   <button class=" bi bi-building-add px-2" style="font-size: 1rem; color: mediumblue;" (click)="createNewProject()"> add </button>
     </td>

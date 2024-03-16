@@ -19,8 +19,13 @@ export class MilestonesService {
   }
 
   getNextStepsForMilestone(id: string): Observable<NextStep[]>{
-    let endpoint = '/steps';
+    let endpoint = '/milestones';
     return this.http.get<NextStep[]>(this.backendUrl + endpoint + '/' + id);
+  }
+
+  createNewMilestone(milestone: Milestone): Observable<Milestone> {
+    let endpoint = '/milestones';
+    return this.http.post<Milestone>(this.backendUrl + endpoint, milestone);
   }
 
 }

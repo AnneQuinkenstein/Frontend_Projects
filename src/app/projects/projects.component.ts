@@ -5,6 +5,7 @@ import {DatePipe, NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {MilestonesService} from "../shared/milestones.service";
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Milestone} from "../shared/milestone";
 
 @Component({
   selector: 'app-projects',
@@ -29,6 +30,7 @@ export class ProjectsComponent implements OnInit {
   projectNameControl = new FormControl<string>('', [Validators.required, Validators.maxLength(25)]);
   topicControl = new FormControl<string>('');
   deadlineControl = new FormControl<string>('', Validators.pattern(/^(0[1-9]|1[0-2])\/(0[1-9]|1[0-9]|2[0-9]|3[01])\/((19|20)\d\d)$/));
+  mileStonecControl= new FormControl<string>('');
   search = new FormControl('');
 
   ngOnInit(): void {
@@ -76,12 +78,10 @@ export class ProjectsComponent implements OnInit {
         topic : this.topicControl.value!,
         deadline : this.deadlineControl.value!
       }
-      console.log(project);
-
-
       this.ps.createNewProject(project).subscribe({
           next: (response) => {
             console.log(response);
+            this.createMilestonesForProject(response);
             this.cancel();
             this.readAllProjects();
           },
@@ -89,13 +89,29 @@ export class ProjectsComponent implements OnInit {
             console.log(err);
           },
           complete: () => console.log('update() completed')
-        }
-      );
+        });
+
     }
      else {
        console.warn('form still invalid!')
     }
+    }
 
+  private createMilestonesForProject(project: Project){
+    let milestoneNameArray = this.mileStonecControl.value!.split(",");
+    milestoneNameArray.filter(milestoneName => this.createMilestone(milestoneName, project.project_id));
+  }
+    private createMilestone(milestoneName: string, projectid: string){
+     let milestone = {
+       milestone_name : milestoneName,
+       status: "toDo",
+       project_id: projectid
+     }
+     this.ms.createNewMilestone(milestone).subscribe({
+       next: (response) => console.log(response),
+       error: (err) => console.log(err),
+       complete: () => console.log('update() completed')
+     })
     }
 
   private formValid() {
@@ -106,6 +122,7 @@ export class ProjectsComponent implements OnInit {
     this.projectNameControl.reset();
     this.topicControl.reset();
     this.deadlineControl.reset();
+    this.mileStonecControl.reset();
   }
 
   filterProjects(){
