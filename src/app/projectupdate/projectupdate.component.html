@@ -7,14 +7,14 @@
            [class]="projectNameControl.touched ? projectNameControl.valid ? 'is-valid' : 'is-invalid' : ''">
     <label for="idProjectName">projectName</label>
     <div class="invalid-feedback">
-      Please provide a projectName.
+      Please provide a Projectname.
     </div>
   </div>
 
   <div class="mb-3 form-floating">
     <input type="text" class="form-control" id="idTopic" placeholder="topic" [formControl]="topicControl"
            [class]="topicControl.touched ? topicControl.valid ? 'is-valid' : 'is-invalid' : ''">
-    <label for="idTopic">Topic</label>
+    <label for="idTopic">topic</label>
     <div class="invalid-feedback">
       Please provide a topic.
     </div>
@@ -23,7 +23,7 @@
   <div class="mb-5 form-floating">
     <input type="text" class="form-control" id="idDealine" placeholder="deadline in DD/MM/YYYY" [formControl]="deadlineControl"
            [class]="deadlineControl.touched ? deadlineControl.valid ? 'is-valid' : 'is-invalid' : ''">
-    <label for="idDealine">Dealine</label>
+    <label for="idDealine">deadline</label>
     <div class="invalid-feedback">
       Please provide a valid dealine address.
     </div>
@@ -31,10 +31,10 @@
 
   <div class="row">
     <div class="col">
-      <button type="button" class="w-100 btn btn-outline-success" (click)="register(content)">Update</button>
+      <button type="button" class="w-100 btn btn-outline-success" (click)="register(content)">update</button>
     </div>
     <div class="col">
-      <button type="button" class="w-100 btn btn-outline-info" (click)="cancel()">Cancel</button>
+      <button type="button" class="w-100 btn btn-outline-info" (click)="cancel()">cancel</button>
     </div>
   </div>
 </div>
@@ -58,7 +58,7 @@
         <td>{{ topicControl.value }}</td>
       </tr>
       <tr>
-        <td>dealine</td>
+        <td>deadline</td>
         <td>:</td>
         <td>{{ deadlineControl.value }}</td>
       </tr>
