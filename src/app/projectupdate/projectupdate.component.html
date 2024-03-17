@@ -4,7 +4,7 @@
 
   <div class="mb-3 form-floating">
     <input type="text" class="form-control" id="idProjectName" placeholder="projectName" [formControl]="projectNameControl"
-           [class]="projectNameControl.touched ? projectNameControl.valid ? 'is-valid' : 'is-invalid' : ''">
+           [class]="projectNameControl.touched ? (projectNameControl.valid ? 'is-valid' : 'is-invalid') : ''">
     <label for="idProjectName">projectName</label>
     <div class="invalid-feedback">
       Please provide a Projectname.
@@ -32,7 +32,7 @@
 
   <div class="row">
     <div class="col">
-      <button type="button" class="w-100 btn btn-outline-success" (click)="register(content)">update</button>
+      <button type="button" class="w-100 btn btn-outline-success" (click)="update()">update</button>
     </div>
     <div class="col">
       <button type="button" class="w-100 btn btn-outline-info" (click)="cancel()">cancel</button>
@@ -40,34 +40,4 @@
   </div>
 </div>
 
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h6 class="modal-title" id="modal-basic-title">Existing member updated!</h6>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <table class="table">
-      <tbody>
-      <tr>
-        <td>projectName</td>
-        <td>:</td>
-        <td>{{ projectNameControl.value }}</td>
-      </tr>
-      <tr>
-        <td>topic</td>
-        <td>:</td>
-        <td>{{ topicControl.value }}</td>
-      </tr>
-      <tr>
-        <td>deadline</td>
-        <td>:</td>
-        <td>{{ deadlineControl.value }}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
-  </div>
-</ng-template>
-</div>
+

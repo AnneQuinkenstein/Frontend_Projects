@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
 import {User} from "../shared/user";
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgIf} from "@angular/common";
-import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-register',
@@ -16,10 +16,10 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 export class RegisterComponent{
   private us = inject(UserService);
   private modalService = inject(NgbModal);
+  private router = inject(Router);
   nicknameControl = new FormControl('', [Validators.required]);
   passwordControl = new FormControl('', [Validators.required]);
   private user?: User;
-  private router = inject(Router);
   private url="";
   closeResult = "";
   isRegistered = false;

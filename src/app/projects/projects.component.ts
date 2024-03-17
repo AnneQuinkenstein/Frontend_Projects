@@ -1,8 +1,8 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, DoCheck, inject, OnChanges, OnInit} from '@angular/core';
 import {ProjectService} from "../shared/project.service";
 import {Project} from "../shared/project";
 import {DatePipe, NgForOf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MilestonesService} from "../shared/milestones.service";
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Milestone} from "../shared/milestone";
@@ -21,7 +21,7 @@ import {Milestone} from "../shared/milestone";
   styleUrl: './projects.component.css'
 })
 
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnInit{
 
   ps = inject(ProjectService);
   ms = inject(MilestonesService);
@@ -36,6 +36,7 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
     this.readAllProjects();
   }
+
 
   readAllProjects() {
     this.ps.getAllProjects().subscribe({
@@ -126,15 +127,16 @@ export class ProjectsComponent implements OnInit {
   }
 
   filterProjects(){
-    let searchstring = this.search.value? this.search.value.toLowerCase(): "";
+    let searchstring = this.search.value? this.search.value!.toLowerCase(): "";
     console.log("searchstring:" + searchstring);
     this.allProjects = this.allProjects.filter( (project) => {
       return (project.project_name.toLowerCase().includes(searchstring) || project.topic?.toLowerCase().includes(searchstring) || project.deadline?.toLowerCase().includes(searchstring) || project.milestone_name?.join().toLowerCase().includes(searchstring));
     });
   }
 
-  back() {
+  clear() {
     this.readAllProjects();
     this.search.reset()
   }
+
 }

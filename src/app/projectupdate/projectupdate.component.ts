@@ -16,17 +16,15 @@ import { Location } from '@angular/common';
 export class ProjectUpdateComponent implements OnInit{
   id: string = '';
   project!: Project;
-  closeResult = '';
 
-  projectNameControl = new FormControl<string>('', [Validators.required, Validators.maxLength(25)]);
+  projectNameControl = new FormControl<string>('', [Validators.required]);
   topicControl = new FormControl<string>('');
   deadlineControl = new FormControl<string>('', Validators.pattern(/^(0[1-9]|1[0-2])\/(0[1-9]|1[0-9]|2[0-9]|3[01])\/((19|20)\d\d)$/));
 
-  private modalService = inject(NgbModal);
   private ps = inject(ProjectService);
   private route = inject(ActivatedRoute);
-  private router = inject(Router);
   private location: Location = inject(Location);
+  private router = inject(Router);
 
 
 
@@ -42,9 +40,10 @@ export class ProjectUpdateComponent implements OnInit{
           this.project = response;
           console.log(this.project);
           this.projectNameControl.setValue(this.project.project_name);
+        /*  console.log("this.project.project_name) " + this.project.project_name)
+          console.log("this.projectNameControl " + this.projectNameControl.value )*/
           this.topicControl.setValue(this.project.topic ? this.project.topic : null);
           this.deadlineControl.setValue(this.project.deadline? this.project.deadline : null);
-          return this.project;
         },
         error: (err) => console.log(err),
         complete: () => console.log('getOne() completed')
@@ -52,35 +51,24 @@ export class ProjectUpdateComponent implements OnInit{
   }
 
 
-  register(content: TemplateRef<any>) {
-
+  update() {
     if(this.projectNameControl.valid)
     {
       let project = {
         project_id: '',
         project_name: this.projectNameControl.value!,
-        topic: this.topicControl.value ? this.topicControl.value : undefined,
-        deadline: this.deadlineControl.value ? this.deadlineControl.value : undefined
+        topic: this.topicControl.value,
+        deadline: this.deadlineControl.value
       }
 
       this.ps.updateProject(project, this.id).subscribe({
         next: (response) => console.log('response', response),
-        error: (err) => console.log(err),
+        error: (err) => console.log("updateProject" + err),
         complete: () => console.log('update completed')
       });
 
-      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result
-        .then(
-          (result) => {
-            this.closeResult = `Closed with: ${result}`;
-            this.router.navigate(['/projects']);
-          },
-          (reason) => {
-            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-          },
-        );
-
       console.log('new project: ', this.project)
+      this.router.navigateByUrl('/projects');
     }
     else
     {
@@ -92,14 +80,4 @@ export class ProjectUpdateComponent implements OnInit{
     this.location.back();
   }
 
-  private getDismissReason(reason: any): string {
-    switch (reason) {
-      case ModalDismissReasons.ESC:
-        return 'by pressing ESC';
-      case ModalDismissReasons.BACKDROP_CLICK:
-        return 'by clicking on a backdrop';
-      default:
-        return `with: ${reason}`;
-    }
-  }
 }
