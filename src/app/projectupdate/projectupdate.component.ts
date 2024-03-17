@@ -23,10 +23,11 @@ export class ProjectUpdateComponent implements OnInit{
   deadlineControl = new FormControl<string>('', Validators.pattern(/^(0[1-9]|1[0-2])\/(0[1-9]|1[0-9]|2[0-9]|3[01])\/((19|20)\d\d)$/));
 
   private modalService = inject(NgbModal);
-  private ps = inject(ProjectService)
-  private route = inject(ActivatedRoute)
+  private ps = inject(ProjectService);
+  private route = inject(ActivatedRoute);
   private router = inject(Router);
   private location: Location = inject(Location);
+
 
 
   ngOnInit(): void {

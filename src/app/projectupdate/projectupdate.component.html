@@ -21,13 +21,14 @@
   </div>
 
   <div class="mb-5 form-floating">
-    <input type="text" class="form-control" id="idDealine" placeholder="deadline in DD/MM/YYYY" [formControl]="deadlineControl"
+    <input type="text" class="form-control" id="idDealine" placeholder="deadline in MM/DD/YYYY" [formControl]="deadlineControl"
            [class]="deadlineControl.touched ? deadlineControl.valid ? 'is-valid' : 'is-invalid' : ''">
     <label for="idDealine">deadline</label>
     <div class="invalid-feedback">
-      Please provide a valid dealine address.
+      Please provide a valid deadline.
     </div>
   </div>
+
 
   <div class="row">
     <div class="col">

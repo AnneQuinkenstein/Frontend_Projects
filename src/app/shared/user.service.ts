@@ -10,9 +10,6 @@ import {User} from "./user";
 export class UserService {
   private backendUrl = 'http://localhost:4000/users';
   private loggedIn: boolean = false;
-  /*
-    private user!: User | null;
-  */
   user: User = {nickname: '', password: ''};
   loggedInChange: Subject<boolean> = new Subject<boolean>();
   userChange: Subject<User> = new Subject<User>();
@@ -24,10 +21,6 @@ export class UserService {
     this.userChange.subscribe((value) => {
       this.user = value
     });
-  }
-
-  getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.backendUrl);
   }
 
   getOneUser(id: string): Observable<User> {
@@ -61,7 +54,4 @@ export class UserService {
     this.userChange.next(this.user);
   }
 
-  getUser(): User | null {
-    return this.user;
-  }
 }

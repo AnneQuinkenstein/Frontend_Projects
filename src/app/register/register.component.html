@@ -1,35 +1,50 @@
 <div class="bucket">
+
   <div class="container">
-  <h1 class="my-5">{{ isRegistration() ? 'registration' : 'login' }}</h1>
-  <div class="mb-3 form-floating">
-    <input type="text" class="form-control" id="idNickname" placeholder="nickname" [formControl]="nicknameControl"
-           [class]="nicknameControl.touched ? nicknameControl.valid ? 'is-valid' : 'is-invalid' : ''">
-    <label for="idNickname">nickname</label>
-    <div class="invalid-feedback">
-      Please provide a nickname.
+    <h1 class="my-5">{{ isRegistration() ? 'registration' : 'login' }}</h1>
+
+    <div class="mb-3 form-floating">
+      <input type="text" class="form-control" id="idNickname" placeholder="nickname" [formControl]="nicknameControl"
+             [class]="nicknameControl.touched ? nicknameControl.valid ? 'is-valid' : 'is-invalid' : ''">
+      <label for="idNickname">nickname</label>
+      <div class="invalid-feedback">
+        Please provide a nickname.
+      </div>
+    </div>
+
+    <div class="mb-3 form-floating">
+      <input type="text" class="form-control" id="idPassword" placeholder="password" [formControl]="passwordControl"
+             [class]="passwordControl.touched ? passwordControl.valid ? 'is-valid' : 'is-invalid' : ''">
+      <label for="idPassword">password</label>
+      <div class="invalid-feedback">
+        Please provide a password.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col" *ngIf="isLogin()">
+        <button type="button" class="w-100 btn btn-outline-success" (click)="login(content)">login</button>
+      </div>
+      <div class="col" *ngIf="isRegistration()">
+        <button type="button" class="w-100 btn btn-outline-success" (click)="register(content)">register</button>
+      </div>
+      <div class="col">
+        <button type="button" class="w-100 btn btn-outline-info" (click)="cancel()">cancel</button>
+      </div>
     </div>
   </div>
 
-  <div class="mb-3 form-floating">
-    <input type="text" class="form-control" id="idPassword" placeholder="password" [formControl]="passwordControl"
-           [class]="passwordControl.touched ? passwordControl.valid ? 'is-valid' : 'is-invalid' : ''">
-    <label for="idPassword">password</label>
-    <div class="invalid-feedback">
-      Please provide a password.
-    </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h6 class="modal-title" id="modal-basic-title" *ngIf="isRegistration() && registrationOK()"> New user {{nicknameControl.value }} registered!</h6>
+    <h6 class="modal-title" id="modal-basic-title1" *ngIf="isRegistration() && !registrationOK()" > {{ errorMessage }} </h6>
+    <h6 class="modal-title" id="modal-basic-title2" *ngIf="isLogin() && loginErrorDisplay()"> {{ errorMessage }} </h6>
+    <h6 class="modal-title" id="modal-basic-title3" *ngIf="isLogin() && !loginErrorDisplay()"> user {{nicknameControl.value }} logged in </h6>
+
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
-  <div class="row">
-    <div class="col" *ngIf="isLogin()" >
-      <button type="button" class="w-100 btn btn-outline-success" (click)="login()">login</button>
-    </div>
-    <div class="col" *ngIf="isRegistration()" >
-      <button type="button" class="w-100 btn btn-outline-success" (click)="register()">register</button>
-    </div>
-    <div class="col">
-      <button type="button" class="w-100 btn btn-outline-info" (click)="cancel()">cancel</button>
-    </div>
-  </div>
+</ng-template>
+
 </div>
-</div>
-
-
