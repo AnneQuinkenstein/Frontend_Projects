@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {Project} from "./project";
 import {HttpClient} from "@angular/common/http";
 import {Milestone} from "./milestone";
 import {NextStep} from "./next-step";
