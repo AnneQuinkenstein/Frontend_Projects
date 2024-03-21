@@ -4,13 +4,15 @@ import {Project} from "./project";
 import {HttpClient} from "@angular/common/http";
 import {Milestone} from "./milestone";
 import {NextStep} from "./next-step";
+import {environment} from "../../environments/environment";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MilestonesService {
-  backendUrl = 'http://localhost:4000';
+  backendUrl = environment.apiUrl;
+
   constructor(private http: HttpClient) { }
 
   getMilestonesForProject(id: string): Observable<Milestone[]>{

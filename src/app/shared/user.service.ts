@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
 import {User} from "./user";
+import {environment} from "../../environments/environment";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private backendUrl = 'http://localhost:4000/users';
+  backendUrl = environment.apiUrl + "/users";
   private loggedIn: boolean = false;
   user: User = {nickname: '', password: ''};
   loggedInChange: Subject<boolean> = new Subject<boolean>();
