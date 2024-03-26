@@ -1,10 +1,30 @@
 # Projects
 
-A Website which helps you to organize your projects. 
+This Webpage helps you to organize your projects in a simple way. 
 
-https://imgur.com/CmbSWTy.pngadd
+![Startframe Projectswebsite](https://imgur.com/CmbSWTy.png)
 
-## Table of Contents
+You need to Login or Register before you can use the website.
+If you are not logged in, you will be redirected to a table of projects. 
+![Projects](https://imgur.com/KcHdPq9.png)
+The filter method is used to filter the projects in any aspect.
+You can also create a new project by applying the mandatory project-name and optional all of the other fields and clicking on the "add" button.
+Delete and update a project works clicking with the corresponding buttons.
+
+The datamodel of the projects-webpage is shown below:
+![SQL Data](https://imgur.com/2OEvyOV.png)
+
+For each Projects there are none or more Milestones. If you click on a Milestone, you will be redirected to the Milestone page.
+![Milestones](https://imgur.com/LkySAEq.png)
+
+The header shows you the Milestonename and the Status ("todo", "in progress", "done").
+The Table beneath shows you the next Steps of the Milestone. You can filter the Steps by any aspect. 
+For each Step there is one or more responsibe Person wich is shown in the last column. 
+
+Todo: CUD for Steps (and mark done) and UD for Milestones, apply participate to Projects.
+
+
+## Technical Contents
 - [Prerequisites](#prerequisites)
 - [Development Server](#development-server)
 - [Deployment](#deployment)
