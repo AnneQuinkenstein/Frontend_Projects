@@ -2,6 +2,11 @@
 
 This Webpage helps you to organize your projects in a simple way. 
 
+Frontend is deployed on [Vercel](https://vercel.com) &
+Backend is deployed on [Render](https://render.com/)
+
+Take a [look 👀](https://frontend-projects-sandy.vercel.app/)
+
 ![Startframe Projectswebsite](https://imgur.com/CmbSWTy.png)
 
 You need to Login or Register before you can use the website.
@@ -31,17 +36,18 @@ Todo: CUD for Steps (and mark done) and UD for Milestones, apply participate to 
 
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
+- npm: ^18.13.0 || ^20.9.0
 - Node.js: ^18.13.0 || ^20.9.0
 - Angular CLI: version 17.0.x
-- PostgreSQL: 13.4
-- npm: ^18.13.0 || ^20.9.0
+- Express [Backend](https://github.com/AnneQuinkenstein/Backend_Projects)
+- and PostgreSQL - Server
 
 ## Development Server
 To set up the development server, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your/repository.git
-
+    ```
    ```bash
    cd project-directory
    ```
