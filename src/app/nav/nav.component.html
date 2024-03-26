@@ -1,23 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="''">home</a>
-    <a *ngIf="isLoggedIn" class="navbar-brand" [routerLink]="'projects'">projects</a>
+    <a [routerLink]="''" class="navbar-brand">home</a>
+    <a *ngIf="isLoggedIn" [routerLink]="'projects'" class="navbar-brand">projects</a>
     <div></div>
 
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!--  //TODO: hamburger menu zeigt keine Links-->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul *ngIf="!isLoggedIn" class="navbar-nav mb-2 mb-lg-0" id="left">
         <li class="nav-item">
-          <a class="nav-link active me-auto ve" aria-current="page" [routerLink]="'register'"> register</a>
+          <a [routerLink]="'register'" aria-current="page" class="nav-link active me-auto ve"> register</a>
         </li>
         |
-        <li  class="nav-item">
-          <a class="nav-link active me-auto ve" aria-current="page" [routerLink]="'login'"> login</a>
+        <li class="nav-item">
+          <a [routerLink]="'login'" aria-current="page" class="nav-link active me-auto ve"> login</a>
         </li>
 
       </ul>
@@ -27,7 +27,7 @@
         </li>
         <h5>|</h5>
         <li class="logout">
-          <button class="btn btn-outline-dark btn-sm" type="button" (click)="callLogout()"> logout</button>
+          <button (click)="callLogout()" class="btn btn-outline-dark btn-sm" type="button"> logout</button>
         </li>
       </ul>
     </div>

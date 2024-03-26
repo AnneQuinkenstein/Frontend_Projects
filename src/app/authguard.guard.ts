@@ -1,10 +1,4 @@
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree
-} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Injectable} from "@angular/core";
 import {UserService} from "./shared/user.service";
 
@@ -23,7 +17,8 @@ export class AuthguardGuard implements CanActivate {
   constructor(
     private us: UserService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   canActivate(
     route: ActivatedRouteSnapshot,

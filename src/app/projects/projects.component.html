@@ -1,70 +1,78 @@
-
 <div class="ausdehnen">
 
   <div class="d-flex justify-content-between mb-3 margin-sides ">
-   <h1>pi pa projects</h1>
-<div class="filte">
-    <input type="text" class="width form-control form-control-sm" placeholder="filter" [formControl]="search" (input)="filterProjects()"/>
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary btn-sm" type="button" (click)="clear()">clear</button>
+    <h1>pi pa projects</h1>
+    <div class="filte">
+      <input (input)="filterProjects()" [formControl]="search" class="width form-control form-control-sm" placeholder="filter"
+             type="text"/>
+      <div class="input-group-append">
+        <button (click)="clear()" class="btn btn-outline-secondary btn-sm" type="button">clear</button>
+      </div>
     </div>
-</div>
   </div>
 
-<table class="table table-striped table-hover table-responsive">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">project</th>
-    <th scope="col">topic</th>
-    <th scope="col">deadline</th>
-    <th scope="col">milestones</th>
-    <th scope="col"></th>
-  </tr>
-  </thead>
-  <tbody>
-   <tr *ngFor="let project of allProjects" >
-       <th scope="row">{{  project.project_id  }}</th>
-       <td>{{ project.project_name }}</td>
-       <td>{{ project.topic }}</td>
-       <td>{{ project.deadline | date }}</td>
-       <td>
-         <span *ngFor="let milestone of project.milestone_name"> <a [routerLink]="['/milestone', milestone]">  <{{milestone}}>  </a></span>
-       </td>
-     <td><a class=" bi bi-pen " style="font-size: 1.5rem; color: mediumblue;" [routerLink]="['/projects', project.project_id]"></a>
-       <span class=" bi bi-trash px-2" style="font-size: 1.5rem; color: darkred;" (click)="deleteProject(project.project_id!)"></span></td>
-      </tr>
-  <tr>
+  <table class="table table-striped table-hover table-responsive">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">project</th>
+      <th scope="col">topic</th>
+      <th scope="col">deadline</th>
+      <th scope="col">milestones</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let project of allProjects">
+      <th scope="row">{{ project.project_id }}</th>
+      <td>{{ project.project_name }}</td>
+      <td>{{ project.topic }}</td>
+      <td>{{ project.deadline | date }}</td>
+      <td>
+        <span *ngFor="let milestone of project.milestone_name"> <a
+          [routerLink]="['/milestone', milestone]">  <{{ milestone }}>  </a></span>
+      </td>
+      <td><a [routerLink]="['/projects', project.project_id]" class=" bi bi-pen "
+             style="font-size: 1.5rem; color: mediumblue;"></a>
+        <span (click)="deleteProject(project.project_id!)" class=" bi bi-trash px-2"
+              style="font-size: 1.5rem; color: darkred;"></span></td>
+    </tr>
+    <tr>
 
-    <td></td>
+      <td></td>
 
-    <td class="input-group">
-      <input type="text" class="form-control" id="validationCustom01" placeholder="project name" [formControl]="projectNameControl"
-             [class]="projectNameControl.touched ? projectNameControl.valid ? 'is-valid' : 'is-invalid' : ''">
-      <div class="invalid-feedback">
-        Project must be named.
-      </div>
-    </td>
+      <td class="input-group">
+        <input [class]="projectNameControl.touched ? projectNameControl.valid ? 'is-valid' : 'is-invalid' : ''" [formControl]="projectNameControl" class="form-control" id="validationCustom01"
+               placeholder="project name"
+               type="text">
+        <div class="invalid-feedback">
+          Project must be named.
+        </div>
+      </td>
 
-    <td>
-      <input type="text" class="form-control" id="idTopic" placeholder="      topic" [formControl]="topicControl" />
-    </td>
-    <td class="input-group has-validation">
-      <input type="text" class="form-control" id="idDeadline" placeholder="deadline in mm/dd/yyyy" [formControl]="deadlineControl"
-             [class]="deadlineControl.touched ? deadlineControl.valid ? 'is-valid' : 'is-invalid' : ''">
-      <div class="invalid-feedback">
-        MM/DD/YYYY
-      </div>
-    </td>
-    <td>
-      <input type="text" class="form-control" id="idMilestones" placeholder="      milesstone, milestone" [formControl]="mileStonecControl" />
-    </td>
-   <!-- <td></td>-->
-   <td>
-  <button class=" bi bi-building-add px-2" style="font-size: 1rem; color: mediumblue;" (click)="createNewProject()"> add </button>
-    </td>
+      <td>
+        <input [formControl]="topicControl" class="form-control" id="idTopic" placeholder="      topic" type="text"/>
+      </td>
+      <td class="input-group has-validation">
+        <input [class]="deadlineControl.touched ? deadlineControl.valid ? 'is-valid' : 'is-invalid' : ''" [formControl]="deadlineControl" class="form-control" id="idDeadline"
+               placeholder="deadline in mm/dd/yyyy"
+               type="text">
+        <div class="invalid-feedback">
+          MM/DD/YYYY
+        </div>
+      </td>
+      <td>
+        <input [formControl]="mileStonecControl" class="form-control" id="idMilestones" placeholder="      milesstone, milestone"
+               type="text"/>
+      </td>
+      <!-- <td></td>-->
+      <td>
+        <button (click)="createNewProject()" class=" bi bi-building-add px-2"
+                style="font-size: 1rem; color: mediumblue;"> add
+        </button>
+      </td>
 
-  </tr>
-  </tbody>
-</table>
+    </tr>
+    </tbody>
+  </table>
 </div>

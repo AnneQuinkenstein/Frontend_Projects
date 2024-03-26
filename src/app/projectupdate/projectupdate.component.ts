@@ -1,10 +1,10 @@
-import { Component, OnInit, TemplateRef, inject } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ProjectService } from '../shared/project.service';
-import { Project } from '../shared/project';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import {Component, inject, OnInit} from '@angular/core';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {ProjectService} from '../shared/project.service';
+import {Project} from '../shared/project';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-update',
@@ -13,7 +13,7 @@ import { Location } from '@angular/common';
   templateUrl: './projectupdate.component.html',
   styleUrl: './projectupdate.component.css'
 })
-export class ProjectUpdateComponent implements OnInit{
+export class ProjectUpdateComponent implements OnInit {
   id: string = '';
   project!: Project;
 
@@ -25,7 +25,6 @@ export class ProjectUpdateComponent implements OnInit{
   private route = inject(ActivatedRoute);
   private location: Location = inject(Location);
   private router = inject(Router);
-
 
 
   ngOnInit(): void {
@@ -40,10 +39,10 @@ export class ProjectUpdateComponent implements OnInit{
           this.project = response;
           console.log(this.project);
           this.projectNameControl.setValue(this.project.project_name);
-        /*  console.log("this.project.project_name) " + this.project.project_name)
-          console.log("this.projectNameControl " + this.projectNameControl.value )*/
+          /*  console.log("this.project.project_name) " + this.project.project_name)
+            console.log("this.projectNameControl " + this.projectNameControl.value )*/
           this.topicControl.setValue(this.project.topic ? this.project.topic : null);
-          this.deadlineControl.setValue(this.project.deadline? this.project.deadline : null);
+          this.deadlineControl.setValue(this.project.deadline ? this.project.deadline : null);
         },
         error: (err) => console.log(err),
         complete: () => console.log('getOne() completed')
@@ -52,8 +51,7 @@ export class ProjectUpdateComponent implements OnInit{
 
 
   update() {
-    if(this.projectNameControl.valid)
-    {
+    if (this.projectNameControl.valid) {
       let project = {
         project_id: '',
         project_name: this.projectNameControl.value!,
@@ -69,9 +67,7 @@ export class ProjectUpdateComponent implements OnInit{
 
       console.log('new project: ', this.project)
       this.router.navigate(['/projects']);
-    }
-    else
-    {
+    } else {
       console.warn('form still invalid!')
     }
   }

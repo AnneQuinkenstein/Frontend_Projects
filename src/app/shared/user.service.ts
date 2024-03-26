@@ -10,10 +10,10 @@ import {environment} from "../../environments/environment";
 })
 export class UserService {
   backendUrl = environment.apiUrl + "/users";
-  private loggedIn: boolean = false;
   user: User = {nickname: '', password: ''};
   loggedInChange: Subject<boolean> = new Subject<boolean>();
   userChange: Subject<User> = new Subject<User>();
+  private loggedIn: boolean = false;
 
   constructor(private http: HttpClient) {
     this.loggedInChange.subscribe((value) => {
@@ -44,6 +44,7 @@ export class UserService {
     this.userChange.next(this.user);
     console.log('login() : ', this.user);
   }
+
   isLoggedIn() {
     return this.loggedIn;
   }

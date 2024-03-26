@@ -1,18 +1,18 @@
 # Projects
 
-This Webpage helps you to organize your projects in a simple way. 
+This Webpage helps you to organize your projects in a simple way.
 
 Frontend is deployed on [Vercel](https://vercel.com) &
 Backend is deployed on [Render](https://render.com/)
 
 Take a [look 👀](https://frontend-projects-sandy.vercel.app/)
 
-Please note that this project uses the free instance of [Render](https://render.com/) for Backend and Database. There might be delays due to inactivity-induced instance spin-down. Keep this in mind when accessing the deployed application. It's recommended to [trigger](https://backend-projects-8pai.onrender.com)  the Backend before taking a look at the website the first time. 
+Please note that this project uses the free instance of [Render](https://render.com/) for Backend and Database. There might be delays due to inactivity-induced instance spin-down. Keep this in mind when accessing the deployed application. It's recommended to [trigger](https://backend-projects-8pai.onrender.com)  the Backend before taking a look at the website the first time.
 
 ![Startframe Projectswebsite](https://imgur.com/CmbSWTy.png)
 
 You need to Login or Register before you can use the website.
-If you are logged in, you will be redirected to a table of projects. 
+If you are logged in, you will be redirected to a table of projects.
 ![Projects](https://imgur.com/KcHdPq9.png)
 The filter method is used to filter the projects in any aspect.
 
@@ -27,19 +27,21 @@ For each Projects there are none or more Milestones. If you click on a Milestone
 ![Milestones](https://imgur.com/LkySAEq.png)
 
 The header shows you the Milestonename (frontend in this case) and the Status ("todo", "in progress", "done").
-The Table beneath shows you the next Steps of this Milestone. You can filter the Steps by any aspect. 
-For each Step there is one or more responsibe Person wich is shown in the last column. 
+The Table beneath shows you the next Steps of this Milestone. You can filter the Steps by any aspect.
+For each Step there is one or more responsibe Person wich is shown in the last column.
 
 Todo: CUD for Steps (and mark done) and CUD for Milestones, apply participate to Projects.
 
-
 ## Technical Contents
+
 - [Prerequisites](#prerequisites)
 - [Development Server](#development-server)
 - [Deployment](#deployment)
 
 ## Prerequisites
+
 Before you begin, ensure you have met the following requirements:
+
 - npm: ^18.13.0 || ^20.9.0
 - Node.js: ^18.13.0 || ^20.9.0
 - Angular CLI: version 17.0.x
@@ -47,7 +49,9 @@ Before you begin, ensure you have met the following requirements:
 - and PostgreSQL - Server
 
 ## Development Server
+
 To set up the development server, follow these steps:
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/your/repository.git

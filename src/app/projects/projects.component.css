@@ -1,11 +1,12 @@
 @import url('../../../node_modules/bootstrap-icons/font/bootstrap-icons.css');
-div{
+
+div {
 
   text-align: center;
   padding: 1%;
 }
 
-a{
+a {
   color: rebeccapurple;
   text-decoration: none;
 }
@@ -20,12 +21,12 @@ a{
   height: 100vh
 }
 
-.table{
+.table {
   opacity: 0.8;
 }
 
-.filter{
-  margin:  2em auto;
+.filter {
+  margin: 2em auto;
 }
 
 .margin-sides {
@@ -33,10 +34,10 @@ a{
   margin-right: 5em;
 }
 
-.width{
+.width {
   width: 20em;
 }
 
-.filte{
+.filte {
   display: flex;
 }

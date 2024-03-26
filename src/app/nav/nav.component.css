@@ -1,6 +1,7 @@
-#left{
+#left {
   margin-left: auto !important;
 }
+
 .navbar {
   opacity: 1;
   background-color: #f8d7da;
@@ -10,10 +11,10 @@
   width: 90%;
 }
 
-.nickname{
+.nickname {
   margin: 5% 10px;
 }
 
-.logout{
+.logout {
   margin: 0 10px;
 }

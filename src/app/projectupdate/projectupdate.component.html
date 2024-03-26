@@ -1,43 +1,45 @@
 <div id="bucket">
-<div class="container">
-  <h1 class="my-5">update</h1>
+  <div class="container">
+    <h1 class="my-5">update</h1>
 
-  <div class="mb-3 form-floating">
-    <input type="text" class="form-control" id="idProjectName" placeholder="projectName" [formControl]="projectNameControl"
-           [class]="projectNameControl.touched ? (projectNameControl.valid ? 'is-valid' : 'is-invalid') : ''">
-    <label for="idProjectName">projectName</label>
-    <div class="invalid-feedback">
-      Please provide a Projectname.
+    <div class="mb-3 form-floating">
+      <input [class]="projectNameControl.touched ? (projectNameControl.valid ? 'is-valid' : 'is-invalid') : ''" [formControl]="projectNameControl" class="form-control" id="idProjectName"
+             placeholder="projectName"
+             type="text">
+      <label for="idProjectName">projectName</label>
+      <div class="invalid-feedback">
+        Please provide a Projectname.
+      </div>
+    </div>
+
+    <div class="mb-3 form-floating">
+      <input [class]="topicControl.touched ? topicControl.valid ? 'is-valid' : 'is-invalid' : ''" [formControl]="topicControl" class="form-control" id="idTopic" placeholder="topic"
+             type="text">
+      <label for="idTopic">topic</label>
+      <div class="invalid-feedback">
+        Please provide a topic.
+      </div>
+    </div>
+
+    <div class="mb-5 form-floating">
+      <input [class]="deadlineControl.touched ? deadlineControl.valid ? 'is-valid' : 'is-invalid' : ''" [formControl]="deadlineControl" class="form-control" id="idDealine"
+             placeholder="deadline in MM/DD/YYYY"
+             type="text">
+      <label for="idDealine">deadline</label>
+      <div class="invalid-feedback">
+        Please provide a valid deadline.
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col">
+        <button (click)="update()" class="w-100 btn btn-outline-success" type="button">update</button>
+      </div>
+      <div class="col">
+        <button (click)="cancel()" class="w-100 btn btn-outline-info" type="button">cancel</button>
+      </div>
     </div>
   </div>
-
-  <div class="mb-3 form-floating">
-    <input type="text" class="form-control" id="idTopic" placeholder="topic" [formControl]="topicControl"
-           [class]="topicControl.touched ? topicControl.valid ? 'is-valid' : 'is-invalid' : ''">
-    <label for="idTopic">topic</label>
-    <div class="invalid-feedback">
-      Please provide a topic.
-    </div>
-  </div>
-
-  <div class="mb-5 form-floating">
-    <input type="text" class="form-control" id="idDealine" placeholder="deadline in MM/DD/YYYY" [formControl]="deadlineControl"
-           [class]="deadlineControl.touched ? deadlineControl.valid ? 'is-valid' : 'is-invalid' : ''">
-    <label for="idDealine">deadline</label>
-    <div class="invalid-feedback">
-      Please provide a valid deadline.
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col">
-      <button type="button" class="w-100 btn btn-outline-success" (click)="update()">update</button>
-    </div>
-    <div class="col">
-      <button type="button" class="w-100 btn btn-outline-info" (click)="cancel()">cancel</button>
-    </div>
-  </div>
-</div>
 
 

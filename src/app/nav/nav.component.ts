@@ -18,11 +18,11 @@ export class NavComponent {
   isLoggedIn = false;
   nickname: string = '';
 
-  constructor( private us: UserService, private router: Router) {
-    this.us.loggedInChange.subscribe( value => {
+  constructor(private us: UserService, private router: Router) {
+    this.us.loggedInChange.subscribe(value => {
       this.isLoggedIn = value
-      if(this.isLoggedIn) {
-        this.us.userChange.subscribe( val => {
+      if (this.isLoggedIn) {
+        this.us.userChange.subscribe(val => {
           console.log('nav user', val)
           this.nickname = val?.nickname;
           console.log('nav username', this.nickname)

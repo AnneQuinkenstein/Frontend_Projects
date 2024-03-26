@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {MilestonesService} from "../shared/milestones.service";
 import {NextStep} from "../shared/next-step";
-import {ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {NgForOf} from "@angular/common";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 
@@ -23,21 +23,20 @@ export class MilestoneComponent implements OnInit {
   //TODO: warum geht hier nur any? und nicht string
   nextSteps: NextStep[] = [];
   id: string = '';
-
+  search = new FormControl('');
   private ms = inject(MilestonesService);
   private route = inject(ActivatedRoute);
-  search = new FormControl('');
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '';
     this.readAllSteps(this.id);
     this.milestone = this.id;
   }
-  readAllSteps( id: string) {
+
+  readAllSteps(id: string) {
     this.ms.getNextStepsForMilestone(id).subscribe({
       next: (response) => {
         this.nextSteps = response;
-        console.log(response);
         this.status = this.nextSteps[0].status
       },
       error: (err) => console.log(err),
@@ -47,9 +46,9 @@ export class MilestoneComponent implements OnInit {
 
 
   filterSteps() {
-    let searchstring = this.search.value? this.search.value.toLowerCase(): "";
+    let searchstring = this.search.value ? this.search.value.toLowerCase() : "";
     console.log("searchstring:" + searchstring);
-    this.nextSteps = this.nextSteps.filter( (step) => {
+    this.nextSteps = this.nextSteps.filter((step) => {
       return (step.todo.toLowerCase().includes(searchstring) || step.todo?.toLowerCase().includes(searchstring) || step.notes?.toLowerCase().includes(searchstring) || step.nickname?.toLowerCase().includes(searchstring));
     });
   }

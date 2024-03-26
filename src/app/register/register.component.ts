@@ -13,35 +13,30 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent{
-  private us = inject(UserService);
-  private modalService = inject(NgbModal);
-  private router = inject(Router);
+export class RegisterComponent {
   nicknameControl = new FormControl('', [Validators.required]);
   passwordControl = new FormControl('', [Validators.required]);
-  private user?: User;
-  private url="";
   closeResult = "";
   isRegistered = false;
   loginError = false;
   errorMessage = "";
+  private us = inject(UserService);
+  private modalService = inject(NgbModal);
+  private router = inject(Router);
+  private user?: User;
+  private url = "";
 
   constructor(route: ActivatedRoute) {
     this.url = route.snapshot.url.join('');
   }
 
-  private formValid() {
-    return this.nicknameControl.valid && this.passwordControl.valid;
-  }
-
-  isRegistration(){
+  isRegistration() {
     return this.url.endsWith("register");
   }
 
-  isLogin(){
+  isLogin() {
     return !this.isRegistration();
   }
-
 
   register(content: TemplateRef<any>) {
     if (this.formValid()) {
@@ -63,7 +58,7 @@ export class RegisterComponent{
         complete: () => console.log(' createUser complete')
       });
 
-      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result
         .then(
           (result) => {
             this.closeResult = `Closed with: ${result}`;
@@ -75,7 +70,7 @@ export class RegisterComponent{
     }
   }
 
-  login(content: TemplateRef<any>){
+  login(content: TemplateRef<any>) {
     if (this.formValid()) {
       let user = {
         nickname: this.nicknameControl.value!,
@@ -85,12 +80,11 @@ export class RegisterComponent{
     }
   }
 
-  loginUser(user: User, content: TemplateRef<any>){
+  loginUser(user: User, content: TemplateRef<any>) {
     this.us.loginUser(user.nickname!, user.password!).subscribe({
         next: (response) => {
-          console.log('login response',response);
-          if(response.status == 200)
-          {
+          console.log('login response', response);
+          if (response.status == 200) {
             this.loginError = false;
             this.us.getOneUser(user.nickname!).subscribe(
               (response) => {
@@ -105,22 +99,22 @@ export class RegisterComponent{
         },
         error: (err) => {
           this.loginError = true;
-          err.error.error?  this.errorMessage = err.error.error :  this.errorMessage = err.error.message;
+          err.error.error ? this.errorMessage = err.error.error : this.errorMessage = err.error.message;
           this.cancel();
         },
         complete: () => console.log('login completed')
       }
     );
 
-   if (this.isLogin()) {
-     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result
-       .then(
-         (result) => {
-           this.closeResult = `Closed with: ${result}`;
-           this.router.navigate(['/projects']);
-         },
-       );
-   }
+    if (this.isLogin()) {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result
+        .then(
+          (result) => {
+            this.closeResult = `Closed with: ${result}`;
+            this.router.navigate(['/projects']);
+          },
+        );
+    }
   }
 
   cancel() {
@@ -128,11 +122,15 @@ export class RegisterComponent{
     this.passwordControl.reset();
   }
 
- registrationOK() {
+  registrationOK() {
     return this.isRegistered;
   }
 
   loginErrorDisplay() {
     return this.loginError;
+  }
+
+  private formValid() {
+    return this.nicknameControl.valid && this.passwordControl.valid;
   }
 }
