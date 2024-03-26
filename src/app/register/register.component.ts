@@ -35,7 +35,6 @@ export class RegisterComponent{
   }
 
   isRegistration(){
-    console.log( this.url.endsWith("register"));
     return this.url.endsWith("register");
   }
 
@@ -52,7 +51,6 @@ export class RegisterComponent{
       }
       this.us.createNewUser(user).subscribe({
         next: (response) => {
-          console.log('response create User', response)
           this.user = response;
           this.loginUser(user, content);
           this.isRegistered = true;
@@ -72,10 +70,7 @@ export class RegisterComponent{
             this.router.navigate(['/projects']);
           },
         );
-
-      console.log('new user: ', user)
     } else {
-      console.warn('form still invalid!');
       this.errorMessage = "form still invalid!";
     }
   }
@@ -105,13 +100,11 @@ export class RegisterComponent{
             )
           } else {
             this.loginError = true;
-            console.log('No login - username and/or password are incorrect');
             this.errorMessage = 'No login - username and/or password are incorrect';
           }
         },
         error: (err) => {
           this.loginError = true;
-          console.log('login error',err.error);
           err.error.error?  this.errorMessage = err.error.error :  this.errorMessage = err.error.message;
           this.cancel();
         },
