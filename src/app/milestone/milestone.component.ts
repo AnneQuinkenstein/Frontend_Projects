@@ -20,7 +20,6 @@ import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 })
 export class MilestoneComponent implements OnInit {
   milestone: string = "";
-  //TODO: warum geht hier nur any? und nicht string
   nextSteps: NextStep[] = [];
   id: string = '';
   search = new FormControl('');

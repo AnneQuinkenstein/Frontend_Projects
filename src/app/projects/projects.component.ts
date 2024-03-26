@@ -59,7 +59,6 @@ export class ProjectsComponent implements OnInit {
 
 
   deleteProject(id: string): void {
-    console.log('id to delete', id)
     this.ps.deleteOneProject(id).subscribe(
       {
         next: (response) => {
@@ -99,7 +98,6 @@ export class ProjectsComponent implements OnInit {
 
   filterProjects() {
     let searchstring = this.search.value ? this.search.value!.toLowerCase() : "";
-    console.log("searchstring:" + searchstring);
     this.allProjects = this.allProjects.filter((project) => {
       return (project.project_name.toLowerCase().includes(searchstring) || project.topic?.toLowerCase().includes(searchstring) || project.deadline?.toLowerCase().includes(searchstring) || project.milestone_name?.join().toLowerCase().includes(searchstring));
     });
@@ -112,7 +110,7 @@ export class ProjectsComponent implements OnInit {
 
   private createMilestonesForProject(project: Project) {
     let milestoneNameArray = this.mileStonecControl.value!.split(",");
-    milestoneNameArray.filter(milestoneName => this.createMilestone(milestoneName, project.project_id));
+    milestoneNameArray.filter(milestoneName => this.createMilestone(milestoneName.trim(), project.project_id));
   }
 
   private createMilestone(milestoneName: string, projectid: string) {
