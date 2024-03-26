@@ -68,7 +68,7 @@ export class ProjectUpdateComponent implements OnInit{
       });
 
       console.log('new project: ', this.project)
-      this.router.navigateByUrl('/projects');
+      this.router.navigate(['/projects']);
     }
     else
     {
