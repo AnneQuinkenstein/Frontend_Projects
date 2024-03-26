@@ -23,9 +23,7 @@ export class NavComponent {
       this.isLoggedIn = value
       if (this.isLoggedIn) {
         this.us.userChange.subscribe(val => {
-          console.log('nav user', val)
           this.nickname = val?.nickname;
-          console.log('nav username', this.nickname)
         })
 
       }

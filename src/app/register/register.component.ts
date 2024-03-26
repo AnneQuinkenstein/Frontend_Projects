@@ -83,7 +83,6 @@ export class RegisterComponent {
   loginUser(user: User, content: TemplateRef<any>) {
     this.us.loginUser(user.nickname!, user.password!).subscribe({
         next: (response) => {
-          console.log('login response', response);
           if (response.status == 200) {
             this.loginError = false;
             this.us.getOneUser(user.nickname!).subscribe(

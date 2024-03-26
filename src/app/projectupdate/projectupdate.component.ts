@@ -45,7 +45,7 @@ export class ProjectUpdateComponent implements OnInit {
           this.deadlineControl.setValue(this.project.deadline ? this.project.deadline : null);
         },
         error: (err) => console.log(err),
-        complete: () => console.log('getOne() completed')
+        complete: () => console.log('get One Project completed')
       });
   }
 

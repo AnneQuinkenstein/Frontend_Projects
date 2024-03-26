@@ -45,7 +45,7 @@ export class ProjectsComponent implements OnInit {
         this.addMilestonesToProject(response);
       },
       error: (err) => console.log(err),
-      complete: () => console.log('getAllProjects() completed')
+      complete: () => console.log('get All Projects completed')
     })
   }
 
@@ -62,11 +62,10 @@ export class ProjectsComponent implements OnInit {
     this.ps.deleteOneProject(id).subscribe(
       {
         next: (response) => {
-          console.log(response);
           this.readAllProjects();
         },
         error: (err) => console.log(err),
-        complete: () => console.log('deleteProject() completed')
+        complete: () => console.log('delete Project completed')
       })
   }
 
@@ -80,7 +79,6 @@ export class ProjectsComponent implements OnInit {
       }
       this.ps.createNewProject(project).subscribe({
         next: (response) => {
-          console.log(response);
           this.createMilestonesForProject(response);
           this.cancel();
           this.readAllProjects();
@@ -88,7 +86,7 @@ export class ProjectsComponent implements OnInit {
         error: (err) => {
           console.log(err);
         },
-        complete: () => console.log('update() completed')
+        complete: () => console.log('update completed')
       });
 
     } else {
@@ -122,7 +120,7 @@ export class ProjectsComponent implements OnInit {
     this.ms.createNewMilestone(milestone).subscribe({
       next: (response) => console.log(response),
       error: (err) => console.log(err),
-      complete: () => console.log('update() completed')
+      complete: () => console.log('update completed')
     })
   }
 

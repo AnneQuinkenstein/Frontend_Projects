@@ -42,7 +42,6 @@ export class UserService {
     this.loggedInChange.next(this.loggedIn);
     this.user = user;
     this.userChange.next(this.user);
-    console.log('login() : ', this.user);
   }
 
   isLoggedIn() {

@@ -40,7 +40,7 @@ export class MilestoneComponent implements OnInit {
         this.addMilestonesStatus(id);
       },
       error: (err) => console.log(err),
-      complete: () => console.log('getNextSteps() completed')
+      complete: () => console.log('get NextSteps completed')
     })
   }
 
@@ -51,13 +51,12 @@ export class MilestoneComponent implements OnInit {
       this.status = response.status;
       },
         error: (err) => console.log(err),
-        complete: () => console.log('addMilestoneStatus() completed')
+        complete: () => console.log('add MilestoneStatus completed')
       })  ;
   }
 
   filterSteps() {
     let searchstring = this.search.value ? this.search.value.toLowerCase() : "";
-    console.log("searchstring:" + searchstring);
     this.nextSteps = this.nextSteps.filter((step) => {
       return (step.todo.toLowerCase().includes(searchstring) || step.todo?.toLowerCase().includes(searchstring) || step.notes?.toLowerCase().includes(searchstring) || step.nickname?.toLowerCase().includes(searchstring));
     });
