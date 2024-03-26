@@ -2,10 +2,10 @@ import {Component, DoCheck, inject, OnChanges, OnInit} from '@angular/core';
 import {ProjectService} from "../shared/project.service";
 import {Project} from "../shared/project";
 import {DatePipe, NgForOf} from "@angular/common";
-import {Router, RouterLink} from "@angular/router";
+import { RouterLink} from "@angular/router";
 import {MilestonesService} from "../shared/milestones.service";
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Milestone} from "../shared/milestone";
+
 
 @Component({
   selector: 'app-projects',
