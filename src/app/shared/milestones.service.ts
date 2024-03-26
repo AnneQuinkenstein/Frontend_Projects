@@ -30,4 +30,9 @@ export class MilestonesService {
     return this.http.post<Milestone>(this.backendUrl + endpoint, milestone);
   }
 
+  getOneMilestone(id: string): Observable<Milestone> {
+    let endpoint = '/milestones/milestone';
+    return this.http.get<Milestone>(this.backendUrl + endpoint + '/' + id);
+  }
+
 }

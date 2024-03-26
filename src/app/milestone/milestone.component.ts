@@ -6,6 +6,7 @@ import {NgForOf} from "@angular/common";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
+
 @Component({
   selector: 'app-milestone',
   standalone: true,
@@ -19,13 +20,13 @@ import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 })
 export class MilestoneComponent implements OnInit {
   milestone: string = "";
-  status: any = "";
   //TODO: warum geht hier nur any? und nicht string
   nextSteps: NextStep[] = [];
   id: string = '';
   search = new FormControl('');
   private ms = inject(MilestonesService);
   private route = inject(ActivatedRoute);
+  status= "";
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '';
@@ -37,13 +38,23 @@ export class MilestoneComponent implements OnInit {
     this.ms.getNextStepsForMilestone(id).subscribe({
       next: (response) => {
         this.nextSteps = response;
-        this.status = this.nextSteps[0].status
+        this.addMilestonesStatus(id);
       },
       error: (err) => console.log(err),
       complete: () => console.log('getNextSteps() completed')
     })
   }
 
+  addMilestonesStatus(id: string) {
+    this.ms.getOneMilestone(id).subscribe(
+      {
+        next: (response) => {
+      this.status = response.status;
+      },
+        error: (err) => console.log(err),
+        complete: () => console.log('addMilestoneStatus() completed')
+      })  ;
+  }
 
   filterSteps() {
     let searchstring = this.search.value ? this.search.value.toLowerCase() : "";
